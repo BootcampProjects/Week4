@@ -1,5 +1,6 @@
 package com.trendyol.kodluyoruz.playlist.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,24 +8,31 @@ import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class PlaylistTest {
 
+    Playlist sut;
+    Track track;
+
+    @BeforeEach
+    public void setUp() {
+        sut = new Playlist("Playlist Test", "Desc Playlist Test", "testUserId123");
+        track = new Track("Track Test", "3.10", "Artist Test");
+    }
+
     @Test
     public void should_create_playlist() {
         // Arrange
-        Playlist sut;
-        String userId = "user123";
+        // defined at beforeEach
 
         // Act
-        sut = new Playlist(userId);
+        // created at beforeEach
 
         // Assert
-        assertThat(sut.getUserId()).isEqualTo(userId);
+        assertThat(sut.getUserId()).isEqualTo("testUserId123");
     }
 
     @Test
     public void should_add_track() {
         // Arrange
-        Playlist sut = new Playlist("testUser1");
-        Track track = new Track("Track1", "3.04", "Artist1");
+        // defined at beforeEach
 
         // Act
         sut.addTrack(track);
@@ -37,8 +45,7 @@ public class PlaylistTest {
     @Test
     public void should_remove_track() {
         // Arrange
-        Playlist sut = new Playlist("testUser1");
-        Track track = new Track("Track1", "3.04", "Artist1");
+        // defined at beforeEach
 
         // Act
         sut.addTrack(track);
@@ -52,8 +59,7 @@ public class PlaylistTest {
     @Test
     public void removeTracks_should_illegal_argument_exception_when_remove_not_exists_track() {
         // Arrange
-        Playlist sut = new Playlist("testUser1");
-        Track track = new Track("Track1", "3.04", "Artist1");
+        // defined at beforeEach
         Track track2 = new Track("Track2", "2.47", "Artist2");
 
         // Act
@@ -69,7 +75,7 @@ public class PlaylistTest {
     @Test
     public void followPlaylist_should_increase_followers_count() {
         // Arrange
-        Playlist sut = new Playlist("testUser1");
+        // defined at beforeEach
 
         // Act
         sut.followPlaylist();
