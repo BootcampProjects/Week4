@@ -65,4 +65,17 @@ public class PlaylistTest {
         assertThat(sut.getTrackCount()).isEqualTo(1);
         assertThat(sut.getTracks().size()).isEqualTo(1);
     }
+
+    @Test
+    public void followPlaylist_should_increase_followers_count() {
+        // Arrange
+        Playlist sut = new Playlist("testUser1");
+
+        // Act
+        sut.followPlaylist();
+        sut.followPlaylist();
+
+        // Assert
+        assertThat(sut.getFollowersCount()).isEqualTo(2);
+    }
 }

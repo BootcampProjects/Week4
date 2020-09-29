@@ -10,11 +10,13 @@ import java.util.List;
 @Setter
 public class Playlist {
     private String userId;
+    private int followersCount;
     private List<Track> tracks;
     private int trackCount;
 
     public Playlist(String userId) {
         this.userId = userId;
+        this.followersCount = 0;
         this.tracks = new ArrayList<>();
         this.trackCount = 0;
     }
@@ -28,5 +30,9 @@ public class Playlist {
         if (this.tracks.remove(track)) {
             this.trackCount--;
         } else throw new IllegalArgumentException("Track not exists in playlist.");
+    }
+
+    public void followPlaylist() {
+        this.followersCount++;
     }
 }
