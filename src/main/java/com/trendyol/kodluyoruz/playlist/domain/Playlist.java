@@ -25,7 +25,8 @@ public class Playlist {
     }
 
     public void removeTrack(Track track) {
-        this.tracks.remove(track);
-        this.trackCount--;
+        if (this.tracks.remove(track)) {
+            this.trackCount--;
+        } else throw new IllegalArgumentException("Track not exists in playlist.");
     }
 }
