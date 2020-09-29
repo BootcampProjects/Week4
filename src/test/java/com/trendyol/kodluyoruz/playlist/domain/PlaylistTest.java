@@ -32,4 +32,19 @@ public class PlaylistTest {
         assertThat(sut.getTracks().get(0)).isEqualTo(track);
         assertThat(sut.getTrackCount()).isEqualTo(1);
     }
+
+    @Test
+    public void should_remove_track() {
+        // Arrange
+        Playlist sut = new Playlist("testUser1");
+        Track track = new Track("Track1", "3.04", "Artist1");
+
+        // Act
+        sut.addTrack(track);
+        sut.removeTrack(track);
+
+        // Assert
+        assertThat(sut.getTrackCount()).isEqualTo(0);
+        assertThat(sut.getTracks().size()).isEqualTo(0);
+    }
 }

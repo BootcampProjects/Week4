@@ -23,4 +23,9 @@ public class Playlist {
         this.tracks.add(track);
         this.trackCount++;
     }
+
+    public void removeTrack(Track track) {
+        this.tracks.remove(track);
+        this.trackCount--;
+    }
 }
