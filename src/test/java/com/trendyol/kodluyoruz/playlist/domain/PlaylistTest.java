@@ -18,4 +18,18 @@ public class PlaylistTest {
         // Assert
         assertThat(sut.getUserId()).isEqualTo(userId);
     }
+
+    @Test
+    public void should_add_track() {
+        // Arrange
+        Playlist sut = new Playlist("testUser1");
+        Track track = new Track("Track1", "3.04", "Artist1");
+
+        // Act
+        sut.addTrack(track);
+
+        // Assert
+        assertThat(sut.getTracks().get(0)).isEqualTo(track);
+        assertThat(sut.getTrackCount()).isEqualTo(1);
+    }
 }
