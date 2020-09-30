@@ -3,6 +3,8 @@ package com.trendyol.kodluyoruz.playlist.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -49,7 +51,7 @@ public class PlaylistTest {
 
         // Act
         sut.addTrack(track);
-        sut.removeTrack(track);
+        sut.removeTrack("testTrack123");
 
         // Assert
         assertThat(sut.getTrackCount()).isEqualTo(0);
@@ -60,14 +62,13 @@ public class PlaylistTest {
     public void removeTracks_should_illegal_argument_exception_when_remove_not_exists_track() {
         // Arrange
         // defined at beforeEach
-        Track track2 = new Track("testTrack234", "Track2", "2.47", "Artist2");
 
         // Act
         sut.addTrack(track);
-        Throwable throwable = catchThrowable(() -> sut.removeTrack(track2));
+        Throwable throwable = catchThrowable(() -> sut.removeTrack("testTrack234"));
 
         // Assert
-        assertThat(throwable).isInstanceOf(IllegalArgumentException.class).hasMessage("Track not exists in playlist.");
+        assertThat(throwable).isInstanceOf(NoSuchElementException.class);
         assertThat(sut.getTrackCount()).isEqualTo(1);
         assertThat(sut.getTracks().size()).isEqualTo(1);
     }

@@ -41,12 +41,12 @@ public class PlaylistService {
         playlistRepository.update(playlist);
     }
 
-    public void removeTrackToPlaylist(String id, Track track) {
+    public void removeTrackToPlaylist(String id, String trackId) {
         Optional<Playlist> optionalPlaylist = playlistRepository.findByIdOptional(id);
         if (optionalPlaylist.isEmpty())
             return;
         Playlist playlist = optionalPlaylist.get();
-        playlist.removeTrack(track);
+        playlist.removeTrack(trackId);
         playlistRepository.update(playlist);
     }
 }

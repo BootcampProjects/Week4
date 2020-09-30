@@ -35,10 +35,12 @@ public class Playlist {
         this.trackCount++;
     }
 
-    public void removeTrack(Track track) {
-        if (this.tracks.remove(track)) {
-            this.trackCount--;
-        } else throw new IllegalArgumentException("Track not exists in playlist.");
+    public void removeTrack(String trackId) {
+        Track track = this.tracks.stream().filter(t -> t.getId().equals(trackId))
+                .findFirst()
+                .orElseThrow();
+        this.tracks.remove(track);
+        this.trackCount--;
     }
 
     public void followPlaylist() {

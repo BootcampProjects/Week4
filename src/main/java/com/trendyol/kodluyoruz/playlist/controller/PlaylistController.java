@@ -35,6 +35,7 @@ public class PlaylistController {
 
     @GetMapping("/u/{userId}")
     public ResponseEntity<List<Playlist>> findAllPlaylistByUserId(@PathVariable String userId, @RequestParam(required = false, defaultValue = "0") String offset, @RequestParam(required = false, defaultValue = "5") String limit) {
+        // TODO : pagination
         return ResponseEntity.ok(playlistService.findAllByUserId(userId));
     }
 
@@ -44,15 +45,15 @@ public class PlaylistController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{id}/a")
+    @PatchMapping("/{id}/t")
     public ResponseEntity<Void> addTrackToPlaylist(@PathVariable String id, @RequestBody Track track) {
         playlistService.addTrackToPlaylist(id, track);
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{id}/r")
-    public ResponseEntity<Void> removeTrackToPlaylist(@PathVariable String id, @RequestBody Track track) {
-        playlistService.removeTrackToPlaylist(id, track);
+    @PatchMapping("/{id}/t/{trackId}")
+    public ResponseEntity<Void> removeTrackToPlaylist(@PathVariable String id, @PathVariable String trackId) {
+        playlistService.removeTrackToPlaylist(id, trackId);
         return ResponseEntity.noContent().build();
     }
 }
