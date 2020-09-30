@@ -1,6 +1,7 @@
 package com.trendyol.kodluyoruz.playlist.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Playlist {
     private String id;
     private String name;

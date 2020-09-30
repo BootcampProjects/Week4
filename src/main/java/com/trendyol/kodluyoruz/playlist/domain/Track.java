@@ -1,18 +1,16 @@
 package com.trendyol.kodluyoruz.playlist.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Track {
     private String name;
     private String length;
     private String artist;
-
-    public Track(String name, String length, String artist) {
-        this.name = name;
-        this.length = length;
-        this.artist = artist;
-    }
 }
