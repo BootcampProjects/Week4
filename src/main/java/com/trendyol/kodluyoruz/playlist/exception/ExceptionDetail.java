@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @Builder
 public class ExceptionDetail {
-    private String type;
+    private String description;
     private String message;
-    private Date timeStamp;
+    private Date date;
 }

@@ -13,9 +13,9 @@ public class ExceptionsHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> resourceNotFoundException(ResourceNotFoundException exception) {
         ExceptionDetail detail = ExceptionDetail.builder()
-                .type("ResourceNotFound")
+                .description("Resource Not Found")
                 .message(exception.getMessage())
-                .timeStamp(new Date()).build();
+                .date(new Date()).build();
 
         return new ResponseEntity<>(detail, HttpStatus.NOT_FOUND);
     }
@@ -23,9 +23,9 @@ public class ExceptionsHandler {
     @ExceptionHandler(InternalServerErrorException.class)
     public ResponseEntity<Object> internalServerErrorException(InternalServerErrorException exception) {
         ExceptionDetail detail = ExceptionDetail.builder()
-                .type("InternalServerError")
+                .description("Internal Server Error")
                 .message(exception.getMessage())
-                .timeStamp(new Date()).build();
+                .date(new Date()).build();
 
         return new ResponseEntity<>(detail, HttpStatus.INTERNAL_SERVER_ERROR);
     }
