@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Track {
+    private String id;
     private String name;
     private String length;
     private String artist;

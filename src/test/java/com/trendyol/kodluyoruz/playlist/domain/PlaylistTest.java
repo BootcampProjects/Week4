@@ -14,7 +14,7 @@ public class PlaylistTest {
     @BeforeEach
     public void setUp() {
         sut = new Playlist("Playlist Test", "Desc Playlist Test", "testUserId123");
-        track = new Track("Track Test", "3.10", "Artist Test");
+        track = new Track("testTrack123", "Track Test", "3.10", "Artist Test");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class PlaylistTest {
     public void removeTracks_should_illegal_argument_exception_when_remove_not_exists_track() {
         // Arrange
         // defined at beforeEach
-        Track track2 = new Track("Track2", "2.47", "Artist2");
+        Track track2 = new Track("testTrack234", "Track2", "2.47", "Artist2");
 
         // Act
         sut.addTrack(track);
