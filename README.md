@@ -4,6 +4,8 @@ Source : https://playlistprojectrestapidocumentation.docs.apiary.io
 Playlist Project API is a REST service which enables access and basic operations
 with data described below.
 
+HOST: https://<span></span>polls.apiblueprint.org/api/v1/
+
 ## Playlists Collection [/playlists]
 
 ### Create Playlist [POST /]
@@ -28,8 +30,21 @@ with data described below.
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Resource Not Found",
+                    "message": "Document with the given id not found",
+                    "date": "2020-09-29T20:08:10.612+00:00"
+                }
+            ]
+        }
+        
++ Response 500 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
@@ -69,8 +84,21 @@ with data described below.
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Resource Not Found",
+                    "message": "Document with the given id not found",
+                    "date": "2020-09-29T20:08:10.612+00:00"
+                }
+            ]
+        }
+        
++ Response 500 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
@@ -153,13 +181,14 @@ with data described below.
             ]
         }
         
-+ Response 404 (application/json)
++ Response 500 (application/json)
 
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
@@ -176,13 +205,26 @@ with data described below.
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Resource Not Found",
+                    "message": "Document with the given id not found",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
         
-### Add Track To Playlist [PATCH /{id}]
++ Response 500 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
+                }
+            ]
+        }
+        
+### Add Track To Playlist [PATCH /{id}/t]
 
 + Parameters
     + id (required, String, `2a56bd72-f94a-4e2a-aa7a-ebce7e237ad2`) ... `id` of playlist - 
@@ -190,6 +232,7 @@ with data described below.
 + Request (application/json)
 
         {
+              "id": "4t578bd72-f94a-872a-aa7a-ei8ce7e6f3ue1",
               "name": "Track Z",
               "length": "2.46",
               "artist": "Artist K"
@@ -202,24 +245,30 @@ with data described below.
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Resource Not Found",
+                    "message": "Document with the given id not found",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
         
-### Remove Track To Playlist [PATCH /r/{id}]
++ Response 500 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
+                }
+            ]
+        }
+        
+### Remove Track To Playlist [PATCH /{id}/t/{trackId}]
 
 + Parameters
     + id (required, String, `2a56bd72-f94a-4e2a-aa7a-ebce7e237ad2`) ... `id` of playlist - 
-    
-+ Request (application/json)
-
-        {
-              "name": "Track Z",
-              "length": "2.46",
-              "artist": "Artist K"
-        }
+    + trackId (required, String, `4t578bd72-f94a-872a-aa7a-ei8ce7e6f3ue1`) ... `id` of track - 
         
 + Response 204 (application/json)
 
@@ -228,8 +277,21 @@ with data described below.
         {
             "errors": [
                 {
-                    "error_type": "ResourceNotFound",
-                    "error_description": "Object Not Found"
+                    "description": "Resource Not Found",
+                    "message": "Document with the given id not found",
+                    "date": "2020-09-29T20:08:10.612+00:00"
+                }
+            ]
+        }
+        
++ Response 500 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Internal Server Error",
+                    "message": "Unable to connect to the remote server",
+                    "date": "2020-09-29T20:08:10.612+00:00"
                 }
             ]
         }
