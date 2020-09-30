@@ -1,5 +1,6 @@
 package com.trendyol.kodluyoruz.playlist.domain;
 
+import com.trendyol.kodluyoruz.playlist.exception.ResourceNotFoundException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,9 +39,13 @@ public class Playlist {
     public void removeTrack(String trackId) {
         Track track = this.tracks.stream().filter(t -> t.getId().equals(trackId))
                 .findFirst()
-                .orElseThrow();
-        this.tracks.remove(track);
-        this.trackCount--;
+                .orElse(null);
+
+        if (track != null) {
+            this.tracks.remove(track);
+            this.trackCount--;
+        } else
+            throw new ResourceNotFoundException("Document with the given trackId not found");
     }
 
     public void followPlaylist() {

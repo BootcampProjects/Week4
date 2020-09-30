@@ -1,9 +1,8 @@
 package com.trendyol.kodluyoruz.playlist.domain;
 
+import com.trendyol.kodluyoruz.playlist.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -59,7 +58,7 @@ public class PlaylistTest {
     }
 
     @Test
-    public void removeTracks_should_illegal_argument_exception_when_remove_not_exists_track() {
+    public void removeTracks_should_resource_not_found_exception_when_remove_not_exists_track() {
         // Arrange
         // defined at beforeEach
 
@@ -68,7 +67,7 @@ public class PlaylistTest {
         Throwable throwable = catchThrowable(() -> sut.removeTrack("testTrack234"));
 
         // Assert
-        assertThat(throwable).isInstanceOf(NoSuchElementException.class);
+        assertThat(throwable).isInstanceOf(ResourceNotFoundException.class).hasMessage("Document with the given trackId not found");
         assertThat(sut.getTrackCount()).isEqualTo(1);
         assertThat(sut.getTracks().size()).isEqualTo(1);
     }
